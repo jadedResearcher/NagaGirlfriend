@@ -1,13 +1,17 @@
 <html>
 
 <head>
-  <title>The Truth About Alt</title>
+  <title>Naga Girlfriend</title>
   <link rel="stylesheet" href="index.css">
   <link rel="icon" href="alt.ico" />
 
   <script>
     //https://dev.to/ekeijl/retro-crt-terminal-screen-in-css-js-4afh
     const clickAudio = new Audio("audio/web_SoundFX_254286__jagadamba__mechanical-switch.mp3");
+    const musicAudio = new Audio("audio/Magical_Theme.mp3");
+    const musicOptions = ["audio/Magical_Theme.mp3","audio/Magical_Theme.mp3","audio/Magical-Theme-Corrupted-2.mp3","audio/Magical-Theme-Corrupted-3.mp3","audio/heartbeat.mp3"];
+    musicAudio.volume = 0.5;
+
     let speed = 50;
 
     const getRandomNumberBetween = (min, max) => {
@@ -42,9 +46,8 @@
         {naga:0, text:"Today is your first day at EYEDOL Games! You sure are nervous!"},
         {naga:250, text:"Oh! It's Naga-senpai! You sure hope she notices you!"},
         {naga:300, text:"She's so cute!"},
-
         {naga: 400, text:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas suscipit, risus eu semper iaculis, dolor nunc convallis leo, ut vehicula augue ante id augue. Phasellus tempus lobortis velit vitae molestie. Proin ac bibendum justo, vel cursus nibh. Nam ut pellentesque nunc. Phasellus non rutrum sapien. Etiam imperdiet ipsum a dolor pharetra sollicitudin. Nullam vitae ante eu sem ultrices pretium eu convallis nulla. Quisque at mauris justo."},
-        {naga: 600, text:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas suscipit, risus eu semper iaculis, dolor nunc convallis leo, ut vehicula augue ante id augue. Phasellus tempus lobortis velit vitae molestie. Proin ac bibendum justo, vel cursus nibh. Nam ut pellentesque nunc. Phasellus non rutrum sapien. Etiam imperdiet ipsum a dolor pharetra sollicitudin. Nullam vitae ante eu sem ultrices pretium eu convallis nulla. Quisque at mauris justo."}
+        {naga:600, text:"Your heart is going 'doki doki'!"},
 
       ];
 
@@ -52,12 +55,12 @@
     }
 
     const play = () => {
-      //todo
+      musicAudio.play();
       const body = document.querySelector('body');
       body.style.background ="rgb(240, 232, 255)";
       const terminal = document.querySelector('#container');
       terminal.innerHTML = "";
-      story(terminal)
+      story(terminal);
     }
 
     const story = (parent)=>{
@@ -67,7 +70,7 @@
 
     }
 
-    const loop = (parent,index, sections)=>{
+    const loop = async(parent,index, sections)=>{
       parent.innerHTML = "";
       const section = sections[index];
       const story = document.createElement("div");
@@ -76,7 +79,6 @@
       const text = document.createElement("div");
       text.classList.add("text");
       //text.innerHTML = sections[index].text;
-      typeWrite(text, section.text)
       story.append(text);
       if(section.naga>0){
         const naga = document.createElement("img");
@@ -84,7 +86,34 @@
         naga.src = "naga_gf.png";
         naga.width = section.naga;
         story.append(naga);
+      } 
+
+      const timing = musicAudio.currentTime;
+      console.log("JR NOTE: options are", musicOptions, section.naga)
+      if(section.naga === 0){
+        musicAudio.src = musicOptions[0];
+        musicAudio.currentTime = timing;
+        musicAudio.play();
+      }else if (section.naga === 250){
+        musicAudio.src = musicOptions[1];
+        musicAudio.currentTime = timing;
+        musicAudio.play();
+      }else if (section.naga === 300){
+        musicAudio.src = musicOptions[2];
+        musicAudio.currentTime = timing;
+        musicAudio.play();
+      }else if (section.naga === 400){
+        musicAudio.src = musicOptions[3];
+        musicAudio.currentTime = timing;
+        musicAudio.play();
+      }else if (section.naga === 600){
+        musicAudio.src = musicOptions[4];
+        musicAudio.currentTime = timing;
+        musicAudio.play();
       }
+
+      await typeWrite(text, section.text)
+
       story.onclick = ()=>{loop(parent, index+1, sections)};
 
     }
