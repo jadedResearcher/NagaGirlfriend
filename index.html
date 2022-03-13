@@ -262,7 +262,7 @@
       }
 
       await typeWrite(text, section.text)
-      story.onclick = () => { loop(parent, index + 1, sections, day) };
+      story.onmouseup = () => { loop(parent, index + 1, sections, day) };
 
     }
 
