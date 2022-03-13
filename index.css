@@ -38,6 +38,22 @@ body {
   border-radius: 19px;
   background:#fbc6d8;
 }
+#credits{
+  padding: 50px;
+}
+
+.credits{
+  position: relative;
+  width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  height: 600px;
+  width: 800px;
+  border: 19px solid #fbc6d8;
+  border-radius: 19px;
+  background:white;
+  color: #fbc6d8;
+}
 
 .naga{
   position: absolute;

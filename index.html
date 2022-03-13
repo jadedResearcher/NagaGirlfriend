@@ -8,8 +8,10 @@
   <script>
     //https://dev.to/ekeijl/retro-crt-terminal-screen-in-css-js-4afh
     const clickAudio = new Audio("audio/web_SoundFX_254286__jagadamba__mechanical-switch.mp3");
-    const musicAudio = new Audio("audio/Magical_Theme.mp3");
+    let musicAudio = new Audio("audio/Magical_Theme.mp3");
     const musicOptions = ["audio/Magical_Theme.mp3", "audio/Magical_Theme.mp3", "audio/Magical-Theme-Corrupted-2.mp3", "audio/Magical-Theme-Corrupted-3.mp3", "audio/heartbeat.mp3"];
+    const crunchAudio = new Audio("audio/333818__inspectorj__cracking-crunching-a.mp3");
+
     musicAudio.volume = 0.5;
 
     let speed = 50;
@@ -145,6 +147,7 @@
       { naga: 600, text: "'There you are!'" },
       { naga: 600, text: " 'I've been so impressed with how much you found out about me, Player-kun!'" },
       { naga: 600, text: " 'Most people give up after the first ***** but not you!'" },
+      { naga: 600, text: " Your heart is pounding so hard...'" },
       { naga: 600,blushing:true, text: " 'How about that smooch?'" },
       ]
     }
@@ -158,11 +161,40 @@
       startDay(terminal, 0);
     }
 
+    const rollCredits = (parent)=>{
+      musicAudio.pause();
+      crunchAudio.play();
+      parent.innerHtml = "";
+      const tmp = document.createElement("div");
+      tmp.classList.add("credits");
+      parent.append(tmp);
+      tmp.innerHTML = `
+      <div id="credits">Credits:
+    <ul>
+      <li>Idea: AdventureSimWest Observers</li>
+      <li>Programming: JR</li>
+      <li>Main Writing: JR</li>
+      <li>Additional Writing: IC</li>
+      <li>Music: manicInsomniac</li>
+      <li>Art: ???</li>
+      <li>Naga Concept: BT</li>
+      <li>Crunch Sound: "Cracking/Crunching, A.wav" by InspectorJ (www.jshaw.co.uk) of Freesound.org</li>
+
+    </ul>
+  </div>
+      `;
+    }
+
     const startDay = (parent, day) => {
+      //const story = [testDay()]
+      const story = [day1(), day2(), day3(), day4()];
+      if(day >= story.length){
+        rollCredits(parent);
+        return;
+      }
       console.log("JR NOTE: starting day", day)
       musicAudio.src = "audio/musicbox.mp3";
       musicAudio.play();
-      const story = [day(), day2(), day3(), day4()];
       const index = 0;
       parent.innerHtml = "";
       const tmp = document.createElement("div");
@@ -259,18 +291,7 @@
     <button onClick="play()">New Game<3<3<3 </button>
 
   </div>
-  <div>Credits:
-    <ul>
-      <li>Idea: AdventureSimWest Observers</li>
-      <li>Programming: JR</li>
-      <li>Main Writing: JR</li>
-      <li>Additional Writing: IC</li>
-      <li>Music: manicInsomniac</li>
-      <li>Art: ???</li>
-      <li>Naga Concept: BT</li>
-
-    </ul>
-  </div>
+  
 
 </body>
 
