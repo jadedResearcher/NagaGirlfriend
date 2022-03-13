@@ -33,6 +33,11 @@ body {
   right: 0px;
 }
 
+.blackout{
+  color: black;
+  background-color: black;
+}
+
 .text{
   font-family: cabin;
   background: white;

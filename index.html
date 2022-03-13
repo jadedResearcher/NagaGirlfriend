@@ -37,17 +37,49 @@
       for(let i = 0; i< text.length; i++){
         await sleep(speed);
         clickAudio.play();
-        element.innerHTML += text.charAt(i);
+        if(text.charAt(i)==="*"){
+          element.innerHTML = `${element.innerHTML}&#9608;`;
+        }else{
+          element.innerHTML = `${element.innerHTML}${text.charAt(i)}`;
+        }
       }
     }
 
-    const transcript = ()=>{
+    const day1 = ()=>{
       const ret = [
-        {naga:0, text:"Today is your first day at EYEDOL Games! You sure are nervous!"},
+      {naga:0, text:"Eyedol Games!  A company blessed with all the hit games both digital and physical in the last 40 years!  A company blessed with hundreds of employees, each the top of their field!"},
+      {naga:0, text:"Bright and early Tuesday morning is your first day as the newest hire, and boy are you nervous!"},
+      {naga:0, text:"You should probably say...It's not just the jitters of your new job.  Your senpai is just, REALLY adorable, and you hope you find the courage to ask her out!"},
+      {naga:250, text:"'Player-kun, there you are!'"},
+      {naga:0, text:"Oh gosh, there's Naga-senpai now!"},
+      {naga:250, text:"'Baka! We're going to be late to today's meeting!'"},
+      {naga:0, text:"You completely forgot about today's orientation! You're so embarrassed!"},
+        {naga:0, text:"'T-Thank you, Naga-senpai'"},
+        {naga:0, text:"The two of you head towards the meeting area.  Aw, jeez--Your hands are sweaty, and you can feel your knees trembling just a bit."},
+        {naga:0, text:"You realize this might be the PERFECT opportunity to get to know her a little better."},
+        {naga:0, text:"'Naga-senpai?  What made you want to join Eyedol Games?'"},
+        {naga:0, text:"She thinks about it in silence as you both navigate the labyrinthian hallways of Eyedol Games. The quiet feels like forever. Your face getting red out of embarrassment at your own question, before she finally answers."},
+        {naga:250, text:"'Honestly? It just felt right, you know? It’s hard to explain… I mean,*****, right? And with all of that, how could I say 'no'?'"},
+        {naga:0, text:"You are stunned that she has such strong ties to the employees here! That's your Naga-senpai for you!"},
+        {naga:250, text:"'What about you, Player-kun? What brought you here?'"},
+        {naga:0, text:"Your mouth moves without so much as asking permission from your horrified brain.  'I was hoping I would get to smooch you!'"},
+        {naga:0, text:"Oh god. You wish something would just swallow you up right here and now and get it over with. Naga-senpai seems to have been stunned into silence."},
+        {naga:250,blushing:true, text:"'E-excuse me!?' she says, when she finally recovers."},
+        {naga:0, text:"You may as well go for broke!"},
+        {naga:0, text:"'I didn't mean to say it like that! B-but, Naga-senpai! I think you're really cute!  And I wanna smooch you!'"},
+        {naga:250, text:"'You. You do realize I am a *****, right?' she asked, incredulously."},
+        {naga:0, text:"'I'm not an idiot! I know you're different than the other girls! But that's what's so special about you! PLEASE, go out with me!'"},
+        {naga:250, text:"'We-el... I guess you're kind of cute? In a ratty kind of way?' "},
+        {naga:0, text:"You'll TAKE it."},
+        {naga:250, text:"'Tell you what.'  She looks seriously into your eyes. They're so huge...   You could get lost forever in them."},
+        {naga:250, text:"'If you get to know me a little better, I'll think about it, okay? By Friday!'"},
+        {naga:0, text:"You shoot her a huge grin and hurry on towards your meeting."},
+
+        /*{naga:0, text:"Today is your first day at EYEDOL Games! You sure are nervous!"},
         {naga:250, text:"Oh! It's Naga-senpai! You sure hope she notices you!"},
         {naga:300, text:"She's so cute!"},
         {naga: 400, text:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas suscipit, risus eu semper iaculis, dolor nunc convallis leo, ut vehicula augue ante id augue. Phasellus tempus lobortis velit vitae molestie. Proin ac bibendum justo, vel cursus nibh. Nam ut pellentesque nunc. Phasellus non rutrum sapien. Etiam imperdiet ipsum a dolor pharetra sollicitudin. Nullam vitae ante eu sem ultrices pretium eu convallis nulla. Quisque at mauris justo."},
-        {naga:600, text:"Your heart is going 'doki doki'!"},
+        {naga:600, text:"Your heart is going 'doki doki'!"},*/
 
       ];
 
@@ -64,7 +96,7 @@
     }
 
     const story = (parent)=>{
-      const story = transcript();
+      const story = day1();
       const index = 0;
       loop(parent,index, story);
 
@@ -83,7 +115,12 @@
       if(section.naga>0){
         const naga = document.createElement("img");
         naga.classList.add("naga");
-        naga.src = "naga_gf.png";
+        if(section.blushing){
+          naga.src = "blushing_naga_gf.png";
+
+        }else{
+          naga.src = "naga_gf.png";
+        }
         naga.width = section.naga;
         story.append(naga);
       } 
@@ -143,6 +180,17 @@
   <div id="container">
     <button onClick="play()">New Game<3<3<3</button>
 
+  </div>
+  <div>Credits: 
+    <ul>
+      <li>Idea: AdventureSimWest Observers</li>
+      <li>Programming: JR</li>
+      <li>Main Writing: JR</li>
+      <li>Additional Writing: IC</li>
+      <li>Music: manicInsomniac</li>
+      <li>Art: ???</li>
+
+    </ul>
   </div>
 
 </body>
