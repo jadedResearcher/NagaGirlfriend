@@ -9,7 +9,7 @@
     //https://dev.to/ekeijl/retro-crt-terminal-screen-in-css-js-4afh
     const clickAudio = new Audio("audio/web_SoundFX_254286__jagadamba__mechanical-switch.mp3");
     const musicAudio = new Audio("audio/Magical_Theme.mp3");
-    const musicOptions = ["audio/Magical_Theme.mp3","audio/Magical_Theme.mp3","audio/Magical-Theme-Corrupted-2.mp3","audio/Magical-Theme-Corrupted-3.mp3","audio/heartbeat.mp3"];
+    const musicOptions = ["audio/Magical_Theme.mp3", "audio/Magical_Theme.mp3", "audio/Magical-Theme-Corrupted-2.mp3", "audio/Magical-Theme-Corrupted-3.mp3", "audio/heartbeat.mp3"];
     musicAudio.volume = 0.5;
 
     let speed = 50;
@@ -26,54 +26,61 @@
       return new Promise(resolve => setTimeout(resolve, ms));
     }
 
-    
-    const typeWrite = async(element,text) => {
-      if(text.charAt(0)=="["){
-        element.innerHTML=text;
-        await sleep(speed* 10);
+
+    const typeWrite = async (element, text) => {
+      if (text.charAt(0) == "[") {
+        element.innerHTML = text;
+        await sleep(speed * 10);
         return;
       }
-      console.log("JR NOTE: first char is", text.charAt[0], "speed is", speed);
-      for(let i = 0; i< text.length; i++){
+      for (let i = 0; i < text.length; i++) {
         await sleep(speed);
         clickAudio.play();
-        if(text.charAt(i)==="*"){
+        if (text.charAt(i) === "*") {
           element.innerHTML = `${element.innerHTML}&#9608;`;
-        }else{
+        } else {
           element.innerHTML = `${element.innerHTML}${text.charAt(i)}`;
         }
       }
     }
 
-    const day1 = ()=>{
+    const testDay = ()=>{
+      return [{naga:0, text:"Today is your first day at EYEDOL Games! You sure are nervous!"},
+        {naga:250, text:"Oh! It's Naga-senpai! You sure hope she notices you!"},
+        {naga:300, text:"She's so cute!"},
+        {naga: 400, text:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas suscipit, risus eu semper iaculis, dolor nunc convallis leo, ut vehicula augue ante id augue. Phasellus tempus lobortis velit vitae molestie. Proin ac bibendum justo, vel cursus nibh. Nam ut pellentesque nunc. Phasellus non rutrum sapien. Etiam imperdiet ipsum a dolor pharetra sollicitudin. Nullam vitae ante eu sem ultrices pretium eu convallis nulla. Quisque at mauris justo."},
+        {naga:600, text:"Your heart is going 'doki doki'!"}]
+    }
+
+    const day1 = () => {
       const ret = [
-      {naga:0, text:"Eyedol Games!  A company blessed with all the hit games both digital and physical in the last 40 years!  A company blessed with hundreds of employees, each the top of their field!"},
-      {naga:0, text:"Bright and early Tuesday morning is your first day as the newest hire, and boy are you nervous!"},
-      {naga:0, text:"You should probably say...It's not just the jitters of your new job.  Your senpai is just, REALLY adorable, and you hope you find the courage to ask her out!"},
-      {naga:250, text:"'Player-kun, there you are!'"},
-      {naga:0, text:"Oh gosh, there's Naga-senpai now!"},
-      {naga:250, text:"'Baka! We're going to be late to today's meeting!'"},
-      {naga:0, text:"You completely forgot about today's orientation! You're so embarrassed!"},
-        {naga:0, text:"'T-Thank you, Naga-senpai'"},
-        {naga:0, text:"The two of you head towards the meeting area.  Aw, jeez--Your hands are sweaty, and you can feel your knees trembling just a bit."},
-        {naga:0, text:"You realize this might be the PERFECT opportunity to get to know her a little better."},
-        {naga:0, text:"'Naga-senpai?  What made you want to join Eyedol Games?'"},
-        {naga:0, text:"She thinks about it in silence as you both navigate the labyrinthian hallways of Eyedol Games. The quiet feels like forever. Your face getting red out of embarrassment at your own question, before she finally answers."},
-        {naga:250, text:"'Honestly? It just felt right, you know? It’s hard to explain… I mean,*****, right? And with all of that, how could I say 'no'?'"},
-        {naga:0, text:"You are stunned that she has such strong ties to the employees here! That's your Naga-senpai for you!"},
-        {naga:250, text:"'What about you, Player-kun? What brought you here?'"},
-        {naga:0, text:"Your mouth moves without so much as asking permission from your horrified brain.  'I was hoping I would get to smooch you!'"},
-        {naga:0, text:"Oh god. You wish something would just swallow you up right here and now and get it over with. Naga-senpai seems to have been stunned into silence."},
-        {naga:250,blushing:true, text:"'E-excuse me!?' she says, when she finally recovers."},
-        {naga:0, text:"You may as well go for broke!"},
-        {naga:0, text:"'I didn't mean to say it like that! B-but, Naga-senpai! I think you're really cute!  And I wanna smooch you!'"},
-        {naga:250, text:"'You. You do realize I am a *****, right?' she asked, incredulously."},
-        {naga:0, text:"'I'm not an idiot! I know you're different than the other girls! But that's what's so special about you! PLEASE, go out with me!'"},
-        {naga:250, text:"'We-el... I guess you're kind of cute? In a ratty kind of way?' "},
-        {naga:0, text:"You'll TAKE it."},
-        {naga:250, text:"'Tell you what.'  She looks seriously into your eyes. They're so huge...   You could get lost forever in them."},
-        {naga:250, text:"'If you get to know me a little better, I'll think about it, okay? By Friday!'"},
-        {naga:0, text:"You shoot her a huge grin and hurry on towards your meeting."},
+        { naga: 0, text: "Eyedol Games!  A company blessed with all the hit games both digital and physical in the last 40 years!  A company blessed with hundreds of employees, each the top of their field!" },
+        { naga: 0, text: "Bright and early Tuesday morning is your first day as the newest hire, and boy are you nervous!" },
+        { naga: 0, text: "You should probably say...It's not just the jitters of your new job.  Your senpai is just, REALLY adorable, and you hope you find the courage to ask her out!" },
+        { naga: 250, text: "'Player-kun, there you are!'" },
+        { naga: 0, text: "Oh gosh, there's Naga-senpai now!" },
+        { naga: 250, text: "'Baka! We're going to be late to today's meeting!'" },
+        { naga: 0, text: "You completely forgot about today's orientation! You're so embarrassed!" },
+        { naga: 0, text: "'T-Thank you, Naga-senpai'" },
+        { naga: 0, text: "The two of you head towards the meeting area.  Aw, jeez--Your hands are sweaty, and you can feel your knees trembling just a bit." },
+        { naga: 0, text: "You realize this might be the PERFECT opportunity to get to know her a little better." },
+        { naga: 0, text: "'Naga-senpai?  What made you want to join Eyedol Games?'" },
+        { naga: 0, text: "She thinks about it in silence as you both navigate the labyrinthian hallways of Eyedol Games. The quiet feels like forever. Your face getting red out of embarrassment at your own question, before she finally answers." },
+        { naga: 250, text: "'Honestly? It just felt right, you know? It's hard to explain... I mean,*****, right? And with all of that, how could I say 'no'?'" },
+        { naga: 0, text: "You are stunned that she has such strong ties to the employees here! That's your Naga-senpai for you!" },
+        { naga: 250, text: "'What about you, Player-kun? What brought you here?'" },
+        { naga: 0, text: "Your mouth moves without so much as asking permission from your horrified brain.  'I was hoping I would get to smooch you!'" },
+        { naga: 0, text: "Oh god. You wish something would just swallow you up right here and now and get it over with. Naga-senpai seems to have been stunned into silence." },
+        { naga: 250, blushing: true, text: "'E-excuse me!?' she says, when she finally recovers." },
+        { naga: 0, text: "You may as well go for broke!" },
+        { naga: 0, text: "'I didn't mean to say it like that! B-but, Naga-senpai! I think you're really cute!  And I wanna smooch you!'" },
+        { naga: 250, text: "'You. You do realize I am a *****, right?' she asked, incredulously." },
+        { naga: 0, text: "'I'm not an idiot! I know you're different than the other girls! But that's what's so special about you! PLEASE, go out with me!'" },
+        { naga: 250, text: "'We-el... I guess you're kind of cute? In a ratty kind of way?' " },
+        { naga: 0, text: "You'll TAKE it." },
+        { naga: 250, text: "'Tell you what.'  She looks seriously into your eyes. They're so huge...   You could get lost forever in them." },
+        { naga: 250, text: "'If you get to know me a little better, I'll think about it, okay? By Friday!'" },
+        { naga: 0, text: "You shoot her a huge grin and hurry on towards your meeting." },
 
         /*{naga:0, text:"Today is your first day at EYEDOL Games! You sure are nervous!"},
         {naga:250, text:"Oh! It's Naga-senpai! You sure hope she notices you!"},
@@ -89,22 +96,39 @@
     const play = () => {
       musicAudio.play();
       const body = document.querySelector('body');
-      body.style.background ="rgb(240, 232, 255)";
+      body.style.background = "rgb(240, 232, 255)";
       const terminal = document.querySelector('#container');
       terminal.innerHTML = "";
-      story(terminal);
+      startDay(terminal,0);
     }
 
-    const story = (parent)=>{
-      const story = day1();
+    const startDay =  (parent,day) => {
+      console.log("JR NOTE: starting day",day)
+      musicAudio.src = "audio/musicbox.mp3";
+      musicAudio.play();
+      const story = [testDay(), day1()];
       const index = 0;
-      loop(parent,index, story);
-
+      parent.innerHtml = "";
+      const tmp = document.createElement("div");
+      tmp.classList.add("transition");
+      parent.append(tmp);
+      setTimeout(()=>{
+        musicAudio.src =musicOptions[0];
+        musicAudio.currentTime = 0; 
+        musicAudio.play();
+        loop(parent, index, story[day], day)
+      },4300)
     }
 
-    const loop = async(parent,index, sections)=>{
+    const loop = async (parent, index, sections, day) => {
+      console.log("JR NOTE: loop",{index,length:sections.length})
       parent.innerHTML = "";
+
+      if(index>= sections.length){
+        return startDay(parent,day+1);
+      }
       const section = sections[index];
+      console.log("JR NOTE: section is: ", section)
       const story = document.createElement("div");
       story.classList.add("story");
       parent.append(story);
@@ -112,38 +136,37 @@
       text.classList.add("text");
       //text.innerHTML = sections[index].text;
       story.append(text);
-      if(section.naga>0){
+      if (section.naga > 0) {
         const naga = document.createElement("img");
         naga.classList.add("naga");
-        if(section.blushing){
+        if (section.blushing) {
           naga.src = "blushing_naga_gf.png";
 
-        }else{
+        } else {
           naga.src = "naga_gf.png";
         }
         naga.width = section.naga;
         story.append(naga);
-      } 
+      }
 
       const timing = musicAudio.currentTime;
-      console.log("JR NOTE: options are", musicOptions, section.naga)
-      if(section.naga === 0){
+      if (section.naga === 0) {
         musicAudio.src = musicOptions[0];
         musicAudio.currentTime = timing;
         musicAudio.play();
-      }else if (section.naga === 250){
+      } else if (section.naga === 250) {
         musicAudio.src = musicOptions[1];
         musicAudio.currentTime = timing;
         musicAudio.play();
-      }else if (section.naga === 300){
+      } else if (section.naga === 300) {
         musicAudio.src = musicOptions[2];
         musicAudio.currentTime = timing;
         musicAudio.play();
-      }else if (section.naga === 400){
+      } else if (section.naga === 400) {
         musicAudio.src = musicOptions[3];
         musicAudio.currentTime = timing;
         musicAudio.play();
-      }else if (section.naga === 600){
+      } else if (section.naga === 600) {
         musicAudio.src = musicOptions[4];
         musicAudio.currentTime = timing;
         musicAudio.volume = 1;
@@ -151,8 +174,7 @@
       }
 
       await typeWrite(text, section.text)
-
-      story.onclick = ()=>{loop(parent, index+1, sections)};
+      story.onclick = () => { loop(parent, index + 1, sections,day) };
 
     }
 
@@ -164,10 +186,10 @@
         clickAudio.play();
       }
 
-      window.onmousedown = ()=>{
-          speed = 0;
+      window.onmousedown = () => {
+        speed = 0;
       }
-      window.onmouseup = ()=>{
+      window.onmouseup = () => {
         speed = 50;
       }
     }
@@ -178,10 +200,10 @@
 
 <body>
   <div id="container">
-    <button onClick="play()">New Game<3<3<3</button>
+    <button onClick="play()">New Game<3<3<3 </button>
 
   </div>
-  <div>Credits: 
+  <div>Credits:
     <ul>
       <li>Idea: AdventureSimWest Observers</li>
       <li>Programming: JR</li>
