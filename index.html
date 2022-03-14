@@ -13,23 +13,24 @@
     const crunchAudio = new Audio("audio/333818__inspectorj__cracking-crunching-a.mp3");
 
     musicAudio.volume = 0.5;
-    const highContrast = true;
+    let highContrast = false;
 
     let speed = 50;
 
-    const highContrastMode = ()=>{
+    const highContrastMode = () => {
       const body = document.querySelector("body");
       const buttons = document.querySelectorAll("button");
-
-      if(highContrast){
+      highContrast = !highContrast;
+      if (highContrast) {
         body.style.color = "#B00C43";
-
-      }else{
+        for (let b of buttons) {
+          b.classList.add("highContrast");
+        }
+      } else {
         body.style.color = "#fbc6d8";
-      }
-
-      for(let b of buttons){
-        b.classList.add("highContrast");
+        for (let b of buttons) {
+          b.classList.remove("highContrast");
+        }
       }
 
     }
