@@ -56,7 +56,6 @@ a{
   border: 19px solid #fbc6d8;
   border-radius: 19px;
   background:white;
-  color: #fbc6d8;
 }
 
 .naga{
@@ -73,7 +72,6 @@ a{
 .text{
   font-family: cabin;
   background: white;
-  color: #fbc6d8;
   padding: 20px;
   margin-left: auto;
   font-size: 18px;
@@ -88,6 +86,14 @@ a{
   bottom: 25px;
   left: 25px;
   z-index: 10;
+}
+
+.highContrast{
+  color: #B00C43;
+}
+
+.dokiContrast{
+  color: #fbc6d8;
 }
 
 button{

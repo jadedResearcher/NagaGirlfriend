@@ -13,8 +13,26 @@
     const crunchAudio = new Audio("audio/333818__inspectorj__cracking-crunching-a.mp3");
 
     musicAudio.volume = 0.5;
+    const highContrast = true;
 
     let speed = 50;
+
+    const highContrastMode = ()=>{
+      const body = document.querySelector("body");
+      const buttons = document.querySelectorAll("button");
+
+      if(highContrast){
+        body.style.color = "#B00C43";
+
+      }else{
+        body.style.color = "#fbc6d8";
+      }
+
+      for(let b of buttons){
+        b.classList.add("highContrast");
+      }
+
+    }
 
     const getRandomNumberBetween = (min, max) => {
       return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -303,6 +321,7 @@
 
   </div>
 
+  <button class="highContrast" onClick="highContrastMode()">High Contrast Mode</button>
 
 </body>
 
